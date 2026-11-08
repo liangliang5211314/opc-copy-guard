@@ -1,0 +1,66 @@
+Verification date: 2026-11-08
+OS: Linux x86_64
+Python: 3.12.14
+Scope: original fictional fixtures; offline checker only. This program and these tests do not call a model.
+Not tested: Windows, macOS, live AI output, model accuracy, natural-language claims, deployed pages.
+Public download verification: NOT RUN. No public URL exists yet.
+Clean-folder check: files copied to a newly created temporary folder before running the commands below.
+
+$ python -X utf8 guard.py --demo
+DEMO OK | 正确示例通过 | 错误示例拦截 3 处
+- 价格（元）：原始值 "399"；待检查值 "299"
+- 交付内容：原始值 ["3 张封面", "可编辑源文件"]；待检查值 ["3 张封面"]
+- 修改轮数：原始值 1；待检查值 3
+范围：虚构数据的字段对照；未调用模型；不检查标题和介绍中的承诺。
+
+Exit code: 0
+
+$ python -X utf8 guard.py baseline.json draft_good.json
+PASS | 7 项固定信息一致 | 标题和介绍仍需人工复核
+
+Exit code: 0
+
+$ python -X utf8 guard.py baseline.json draft_bad.json
+FAIL | 3 项固定信息不一致
+- 价格（元）：原始值 "399"；待检查值 "299"
+- 交付内容：原始值 ["3 张封面", "可编辑源文件"]；待检查值 ["3 张封面"]
+- 修改轮数：原始值 1；待检查值 3
+先对照原始清单修改待检查稿，不要为通过检查改动原始清单。
+
+Exit code: 1
+
+$ python -X utf8 -m unittest -v
+
+test_bad_three_fields (test_guard.GuardTests.test_bad_three_fields) ... ok
+test_boolean_rejected (test_guard.GuardTests.test_boolean_rejected) ... ok
+test_cli_lone_surrogate_draft (test_guard.GuardTests.test_cli_lone_surrogate_draft) ... ok
+test_demo_exit (test_guard.GuardTests.test_demo_exit) ... ok
+test_dictionary_order_ignored (test_guard.GuardTests.test_dictionary_order_ignored) ... ok
+test_duplicate_keys_rejected (test_guard.GuardTests.test_duplicate_keys_rejected) ... ok
+test_empty_copy_rejected (test_guard.GuardTests.test_empty_copy_rejected) ... ok
+test_empty_fixed_rejected (test_guard.GuardTests.test_empty_fixed_rejected) ... ok
+test_exit_codes (test_guard.GuardTests.test_exit_codes) ... ok
+test_extra_fixed_field (test_guard.GuardTests.test_extra_fixed_field) ... ok
+test_extra_top_level_rejected (test_guard.GuardTests.test_extra_top_level_rejected) ... ok
+test_float_rejected (test_guard.GuardTests.test_float_rejected) ... ok
+test_free_text_not_semantically_checked (test_guard.GuardTests.test_free_text_not_semantically_checked) ... ok
+test_good (test_guard.GuardTests.test_good) ... ok
+test_invalid_json (test_guard.GuardTests.test_invalid_json) ... ok
+test_limit (test_guard.GuardTests.test_limit) ... ok
+test_list_order_is_strict (test_guard.GuardTests.test_list_order_is_strict) ... ok
+test_lone_surrogates_rejected (test_guard.GuardTests.test_lone_surrogates_rejected) ... ok
+test_missing_file (test_guard.GuardTests.test_missing_file) ... ok
+test_missing_fixed_field (test_guard.GuardTests.test_missing_fixed_field) ... ok
+test_missing_top_level_rejected (test_guard.GuardTests.test_missing_top_level_rejected) ... ok
+test_no_mutation (test_guard.GuardTests.test_no_mutation) ... ok
+test_nonfinite_rejected (test_guard.GuardTests.test_nonfinite_rejected) ... ok
+test_null_rejected (test_guard.GuardTests.test_null_rejected) ... ok
+test_surrogate_duplicate_key_error_is_printable (test_guard.GuardTests.test_surrogate_duplicate_key_error_is_printable) ... ok
+test_utf8_bom_allowed (test_guard.GuardTests.test_utf8_bom_allowed) ... ok
+test_wrong_scalar_type (test_guard.GuardTests.test_wrong_scalar_type) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.036s
+
+OK
+Exit code: 0
