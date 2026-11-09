@@ -1,0 +1,46 @@
+Rebuilt version, fresh execution evidence
+$ python3 --version
+Python 3.12.14
+
+$ python3 -B -m unittest -v
+test_bom_crlf_and_quoted_comma (test_delivery_check.DeliveryTests.test_bom_crlf_and_quoted_comma) ... ok
+test_check_does_not_change_file_bytes (test_delivery_check.DeliveryTests.test_check_does_not_change_file_bytes) ... ok
+test_chinese_filename (test_delivery_check.DeliveryTests.test_chinese_filename) ... ok
+test_cli_codes_and_json (test_delivery_check.DeliveryTests.test_cli_codes_and_json) ... ok
+test_complete_folder_passes (test_delivery_check.DeliveryTests.test_complete_folder_passes) ... ok
+test_duplicate_filename_rejected (test_delivery_check.DeliveryTests.test_duplicate_filename_rejected) ... ok
+test_duplicate_id_rejected (test_delivery_check.DeliveryTests.test_duplicate_id_rejected) ... ok
+test_empty_plan_rejected (test_delivery_check.DeliveryTests.test_empty_plan_rejected) ... ok
+test_empty_zero_bytes (test_delivery_check.DeliveryTests.test_empty_zero_bytes) ... ok
+test_extra_hidden_file_is_not_silently_ignored (test_delivery_check.DeliveryTests.test_extra_hidden_file_is_not_silently_ignored) ... ok
+test_filename_byte_length_limit (test_delivery_check.DeliveryTests.test_filename_byte_length_limit) ... ok
+test_invalid_id_rejected (test_delivery_check.DeliveryTests.test_invalid_id_rejected) ... ok
+test_invalid_utf8_rejected (test_delivery_check.DeliveryTests.test_invalid_utf8_rejected) ... ok
+test_malformed_csv_rejected (test_delivery_check.DeliveryTests.test_malformed_csv_rejected) ... ok
+test_missing_names_report_id (test_delivery_check.DeliveryTests.test_missing_names_report_id) ... ok
+test_missing_output_rejected (test_delivery_check.DeliveryTests.test_missing_output_rejected) ... ok
+test_nonempty_nonsense_is_not_quality_checked (test_delivery_check.DeliveryTests.test_nonempty_nonsense_is_not_quality_checked) ... ok
+test_permission_error_not_pass (test_delivery_check.DeliveryTests.test_permission_error_not_pass) ... ok
+test_root_symlink_rejected (test_delivery_check.DeliveryTests.test_root_symlink_rejected) ... ok
+test_same_count_still_fails (test_delivery_check.DeliveryTests.test_same_count_still_fails) ... ok
+test_subdirectory_blocks (test_delivery_check.DeliveryTests.test_subdirectory_blocks) ... ok
+test_symlink_blocks_without_following (test_delivery_check.DeliveryTests.test_symlink_blocks_without_following) ... ok
+test_unicode_normalization_collision_rejected (test_delivery_check.DeliveryTests.test_unicode_normalization_collision_rejected) ... ok
+test_unsafe_filenames_rejected (test_delivery_check.DeliveryTests.test_unsafe_filenames_rejected) ... ok
+test_wrong_header_rejected (test_delivery_check.DeliveryTests.test_wrong_header_rejected) ... ok
+test_wrong_row_width_rejected (test_delivery_check.DeliveryTests.test_wrong_row_width_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.012s
+
+OK
+
+$ python3 -B delivery_check.py --plan plan.csv --output examples/good
+PASS expected=3 ok=3 missing=0 empty=0 extra=0 blocked=0
+
+$ python3 -B delivery_check.py --plan plan.csv --output examples/bad
+FAIL expected=3 ok=1 missing=1 empty=1 extra=1 blocked=0
+MISSING {"id": "P02", "file": "02-summary.txt"}
+EMPTY {"id": "P03", "file": "03-summary.txt"}
+EXTRA "old-summary.txt"
+exit_code=1

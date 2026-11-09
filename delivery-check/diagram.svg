@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<rect width="1200" height="800" fill="#F5F3EC"/>
+<g font-family="Noto Sans CJK SC, sans-serif">
+<text x="66" y="63" font-size="21" fill="#597066" font-weight="700">OPC 工具包 · 批量交付核对</text>
+<text x="66" y="138" font-size="52" fill="#172D27" font-weight="800">数量对了，也可能漏交</text>
+<text x="68" y="184" font-size="26" fill="#56665F">应交 3 份，文件夹也有 3 份。为什么还不能交？</text>
+<rect x="66" y="222" width="450" height="365" rx="20" fill="#FFFFFF"/>
+<rect x="594" y="222" width="540" height="365" rx="20" fill="#FFFFFF"/>
+<text x="96" y="268" font-size="27" fill="#172D27" font-weight="700">开工前的应交清单</text>
+<text x="624" y="268" font-size="27" fill="#172D27" font-weight="700">实际输出文件夹</text>
+<g font-size="26" fill="#233C32"><text x="97" y="342">P01　第一份摘要</text><text x="97" y="419">P02　第二份摘要</text><text x="97" y="496">P03　第三份摘要</text></g>
+<g stroke="#CCD7D0" stroke-width="3"><path d="M465 330 H610"/><path d="M465 407 H610"/><path d="M465 484 H610"/></g>
+<g font-size="24" font-weight="600"><text x="628" y="342" fill="#208052">第一份：存在且非零</text><text x="628" y="419" fill="#C04930">第二份：缺失</text><text x="628" y="496" fill="#C04930">第三份：零字节</text><text x="628" y="553" fill="#9D651A">额外混入：一份旧稿</text></g>
+<rect x="66" y="615" width="1068" height="88" rx="16" fill="#172D27"/>
+<text x="99" y="670" font-size="29" fill="#FFFFFF" font-weight="650">先列清单　→　检查文件夹　→　按编号处理问题</text>
+<text x="68" y="742" font-size="22" fill="#56665F">完整性通过后，还要打开文件核对内容。</text>
+<text x="68" y="777" font-size="17" fill="#78857D">虚构故障示例 · 原创示意图，非软件截图 · 不代表模型质量评测</text>
+</g></svg>
